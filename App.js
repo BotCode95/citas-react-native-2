@@ -21,19 +21,22 @@ export default function App() {
   return (
     <View style={styles.contenedor}>
       <Text style={styles.titulo}>Administrador de Citas</Text>
-      <Formulario/>
-      <Text style={styles.titulo}>{citas.length > 0 ? 
-      'Administra tus citas' : ' No hay citas,agrega una'}</Text>
-      <FlatList
-        data={citas}
-        renderItem = {({item}) => (
-            <Cita cita={item}
-              eliminarPaciente={eliminarPaciente}
-            />
-          )
-        }
-        keyExtractor={cita => cita.id}
-      />
+        <View style={styles.contenido}>
+          <Formulario/>
+          <Text style={styles.titulo}>{citas.length > 0 ? 
+          'Administra tus citas' : ' No hay citas,agrega una'}</Text>
+          <FlatList
+            style={styles.listado}
+            data={citas}
+            renderItem = {({item}) => (
+                <Cita cita={item}
+                  eliminarPaciente={eliminarPaciente}
+                />
+              )
+            }
+            keyExtractor={cita => cita.id}
+          />
+        </View>
     </View>
   );
 }
@@ -51,4 +54,12 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       color: '#fff'
   },
+  contenido : {
+    flex: 1,
+    marginHorizontal: '2.5%'
+  },
+  listado : {
+    flex:1,
+
+  }
 });
