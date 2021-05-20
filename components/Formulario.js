@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {Text, StyleSheet, View, TextInput, Button, TouchableHighlight, Alert, ScrollView} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
+import shortid from 'shortid';
 
-const Formulario = () => {
+const Formulario = ({citas,setCitas, setMostrarForm}) => {
     const [paciente,setPaciente] = useState('');
     const [propietario,setPropietario] = useState('');
     const [telefono,setTelefono] = useState('');
@@ -51,6 +52,16 @@ const Formulario = () => {
                 mostrarAlerta()
                 return;
             }
+        const cita = {paciente, propietario, telefono, fecha, hora, sintomas};
+
+        cita.id = shortid.generate();
+
+        const citasActuales = [...citas,cita];
+        setCitas(citasActuales)
+
+        setMostrarForm(false)
+
+
     }
 
     const mostrarAlerta = () => {
@@ -121,9 +132,11 @@ const Formulario = () => {
                     onChangeText={(texto) => setSintomas(texto)}
                 />
             </View>
-            <TouchableHighlight onPress={() => crearNuevaCita()} style={styles.btnEnviar}>
-                <Text style={styles.textoSubmit}>Enviar </Text>
-            </TouchableHighlight>
+            <View>
+                <TouchableHighlight onPress={() => crearNuevaCita()} style={styles.btnEnviar}>
+                    <Text style={styles.textoSubmit}>Enviar </Text>
+                </TouchableHighlight>
+            </View>
         </ScrollView>
         </>
      );
@@ -150,7 +163,7 @@ const styles= StyleSheet.create({
     btnEnviar: {
         padding: 10,
         backgroundColor: '#7d024e',
-        marginVertical:10
+        marginVertical:25,
     },
     textoSubmit: {
         color: '#FFF',
