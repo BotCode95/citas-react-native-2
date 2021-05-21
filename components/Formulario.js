@@ -3,7 +3,7 @@ import {Text, StyleSheet, View, TextInput, Button, TouchableHighlight, Alert, Sc
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import shortid from 'shortid';
 
-const Formulario = ({citas,setCitas, setMostrarForm}) => {
+const Formulario = ({citas, setCitas, setMostrarForm}) => {
     const [paciente,setPaciente] = useState('');
     const [propietario,setPropietario] = useState('');
     const [telefono,setTelefono] = useState('');
@@ -15,11 +15,12 @@ const Formulario = ({citas,setCitas, setMostrarForm}) => {
 
     const showDatePicker = () => {
         setDatePickerVisibility(true);
-
     }
+
     const hideDatePicker = () => {
         setDatePickerVisibility(false);
     }
+
     const confirmarFecha = date => {
         console.log(date)
         const opciones ={year: 'numeric', month: 'long', day: "2-digit"}
@@ -29,8 +30,8 @@ const Formulario = ({citas,setCitas, setMostrarForm}) => {
 
     const showTimePicker = () => {
         setTimePickerVisibility(true);
-        
     }
+
     const hideTimePicker = () => {
         setTimePickerVisibility(false);
     }
@@ -42,13 +43,13 @@ const Formulario = ({citas,setCitas, setMostrarForm}) => {
     }
 
     const crearNuevaCita= () => {
-        if(paciente.trim() === '' ||
+         if(paciente.trim() === '' ||
             propietario.trim() === '' ||
             telefono.trim() === '' ||
             fecha.trim() === '' ||
             hora.trim() === '' ||
             sintomas.trim() === '') {
-                console.log('Complete los datos');
+                //console.log('Complete los datos');
                 mostrarAlerta()
                 return;
             }
@@ -58,10 +59,7 @@ const Formulario = ({citas,setCitas, setMostrarForm}) => {
 
         const citasActuales = [...citas,cita];
         setCitas(citasActuales)
-
         setMostrarForm(false)
-
-
     }
 
     const mostrarAlerta = () => {

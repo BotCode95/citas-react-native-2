@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableHighlight, Platform, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import Cita from './components/Cita';
@@ -28,11 +27,11 @@ export default function App() {
     <TouchableWithoutFeedback onPress={() => cerrarTeclado()}>
     <View style={styles.contenedor}>
       <Text style={styles.titulo}>Administrador de Citas</Text>
-      <View>
-        <TouchableHighlight onPress={() => mostrarFormulario()} style={styles.btnMostrarForm}>
-            <Text style={styles.textoForm}>{mostrarForm ? 'Ocultar Cita' : 'Crear Nueva Cita '}</Text>
-        </TouchableHighlight>
-      </View>
+        <View>
+          <TouchableHighlight onPress={() => mostrarFormulario()} style={styles.btnMostrarForm}>
+              <Text style={styles.textoForm}>{mostrarForm ? 'Ocultar Cita' : 'Crear Nueva Cita '}</Text>
+          </TouchableHighlight>
+        </View>
         <View style={styles.contenido}>
           {mostrarForm ? (
             <>
@@ -61,7 +60,7 @@ export default function App() {
             </>
           )}
         </View>
-    </View>
+      </View>
     </TouchableWithoutFeedback>
   );
 }
